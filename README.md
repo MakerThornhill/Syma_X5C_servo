@@ -23,3 +23,7 @@ Using those signals this sketch moves a servo from 0 degress to - 90 degrees to 
   Other bits and pieces were found in the Arduino forums
 
  *******************************************************************
+
+**Demostration** 
+
+Initial test using a Pro Trinket: https://youtu.be/eBlpM11Wp7U
