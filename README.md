@@ -9,8 +9,6 @@ Using those signals this sketch moves a servo from 0 degress to - 90 degrees to 
 
  *******************************************************************
   **Board:** [Adafruit Trinket (3.3 v)](https://www.adafruit.com/product/1500)
-  
-  *Notes:*
 
   >"Required library is the [Adafruit_SoftServo library](https://github.com/adafruit/Adafruit_SoftServo). The standard Arduino IDE servo library will not work with 8 bit AVR microcontrollers like Trinket and Gemma due to differences in available timer hardware and programming. We simply refresh by piggy-backing on the timer0 millis() counter"
 
@@ -20,7 +18,7 @@ Using those signals this sketch moves a servo from 0 degress to - 90 degrees to 
 
  *******************************************************************
 
-  Detecting the camera signal was adapted from a 'hold button' sketch at http://playground.arduino.cc/Code/HoldButton
+  Detecting the camera signal was adapted from a ['hold button' sketch](http://playground.arduino.cc/Code/HoldButton)
 
   Other bits and pieces were found in the Arduino forums
 
