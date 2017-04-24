@@ -1,3 +1,5 @@
+#include <Adafruit_SoftServo.h>
+
 /*******************************************************************
   SYMA X5C servo control
 *******************************************************************
@@ -37,12 +39,10 @@
   Other bits and pieces were found in the Arduino forums
 
  *******************************************************************/
- 
-#include <Adafruit_SoftServo.h>
 
-#define SERVO1PIN 0   // Servo control line on Trinket Pin #7
+#define servoPin 0
 int signal = 2; // The signal from the SYMA camera port
-int LEDsignal = 1; // Blink
+int LEDsignal = 1; // LED
 
 int current;         // Current state of the button
                      // (LOW is pressed b/c i'm using the pullup resistors)
@@ -63,11 +63,11 @@ void setup()
   digitalWrite(LEDsignal, LOW);
   
   
- OCR0A = 0xAF;            // any number is OK
- TIMSK |= _BV(OCIE0A);    // Turn on the compare interrupt (below!)
+OCR0A = 0xAF;            // any number is OK
+TIMSK |= _BV(OCIE0A);    // Turn on the compare interrupt (below!)
   
-  myServo1.attach(SERVO1PIN);   // Attach the servo to pin 0 on Trinket
-  myServo1.write(165);          // Initial position (horizontal)
+  myServo1.attach(servoPin);   // Attach the servo to pin 0 on Trinket
+  myServo1.write(180);          // Initial position (horizontal)
   delay(15);                   // Wait 15ms for the servo to reach the position
 }
 
@@ -94,31 +94,34 @@ void loop() {
       //----------------- Controlling the Servo ------------------
       //----------------------------------------------------------
  
-      // Low signal from Camera, 0.15 - 0.35s (picture button)
+      // PICTURE BUTTON (Low signal from Camera, 0.15 - 0.35s)
       if (millis_held > 150  && millis_held < 350) { 
         
         //Move from 0 to -90 degrees (horizontal to straight down)
         if(toggle){
-          myServo1.write(70);
+          myServo1.write(0);
           toggle = !toggle;
-          digitalWrite(LEDsignal, HIGH);   // turn the LED on
-          delay(500);                       // wait for half a second
-          digitalWrite(LEDsignal, LOW);    // turn the LED off
+          digitalWrite(LEDsignal, HIGH);   // turn the LED on (HIGH is the voltage level)
+          delay(500);                       // wait
+          digitalWrite(LEDsignal, LOW);    // turn the LED off by making the voltage LOW
         }
         //Move from 90 to 0 degrees (straight down to horizontal)
         else{
-          myServo1.write(165);
+          myServo1.write(180);
           toggle = !toggle;
-          digitalWrite(LEDsignal, HIGH);   // turn the LED on
-          delay(500);                       // wait for half a second
-          digitalWrite(LEDsignal, LOW);    // turn the LED off
+          digitalWrite(LEDsignal, HIGH);   // turn the LED on (HIGH is the voltage level)
+          delay(500);                       // wait
+          digitalWrite(LEDsignal, LOW);    // turn the LED off by making the voltage LOW
         }
-      } //0.25s end_if
+      } //end_if picture
       
-     // Low signal from Camera is >0.5s (video button)
+     // VIDEO BUTTON (low signal from Camera, ~0.75s)
       if (millis_held > 500) {
-        //whatever we want... haven't decided yet
-      }//0.75s end_if
+        //whatever we want... for now let's just show it works
+         digitalWrite(LEDsignal, HIGH);   // turn the LED on (HIGH is the voltage level)
+         delay(1500);                       // wait
+         digitalWrite(LEDsignal, LOW);    // turn the LED off by making the voltage LOW
+      }//end_if video
  
       //----------------------------------------------------------
       //----------------------------------------------------------
@@ -139,12 +142,12 @@ void loop() {
       // Called by the microcontroller every 2 milliseconds
 
     volatile uint8_t counter = 0;
-    SIGNAL(TIMER0_COMPA_vect) {
-      // this gets called every 2 milliseconds
-        counter += 2;
-        // every 20 milliseconds, refresh the servos!
-        if (counter >= 20) {
-        counter = 0;
-        myServo1.refresh();
-            }
-        }  
+SIGNAL(TIMER0_COMPA_vect) {
+  // this gets called every 2 milliseconds
+  counter += 2;
+  // every 20 milliseconds, refresh the servos!
+  if (counter >= 20) {
+    counter = 0;
+    myServo1.refresh();
+  }
+}
