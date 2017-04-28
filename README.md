@@ -11,6 +11,8 @@ Using those signals this sketch moves a servo from 0 degress to - 90 degrees to 
 
 The sketch can be adapted to control other components, such as LEDs, buzzers or altitude boards. Just make sure you include the code to read the camera signals. 
 
+![alt text](https://raw.githubusercontent.com/EThornill/SYMA_X5C_servo/master/schematic.jpg "schematic")
+
  *******************************************************************
   **Board:** [Adafruit Trinket (3.3 v)](https://www.adafruit.com/product/1500)
 
