@@ -30,4 +30,5 @@ The sketch can be adapted to control other components, such as LEDs, buzzers or 
 
 **Demostration** 
 
-Initial test using a Pro Trinket: https://youtu.be/eBlpM11Wp7U
+- Initial test using a Pro Trinket: https://youtu.be/eBlpM11Wp7U
+- Project summary using a Trinket: https://youtu.be/Xz4V6qkwmkQ
