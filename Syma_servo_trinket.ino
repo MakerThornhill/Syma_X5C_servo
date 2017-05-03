@@ -42,7 +42,7 @@
 
 #define servoPin 0
 int signal = 2; // The signal from the SYMA camera port
-int LEDsignal = 1; // LED
+int LEDsignal = 1; // onboard LED
 
 int current;         // Current state of the button
                      // (LOW is pressed b/c i'm using the pullup resistors)
@@ -53,13 +53,13 @@ byte previous = HIGH;
 unsigned long firstTime; // how long since the signal was detected
 
 
-Adafruit_SoftServo myServo1;
+Adafruit_SoftServo myServo1; 
 boolean toggle = true;
 
 void setup() 
 { 
-  digitalWrite(signal, HIGH);
-  pinMode(LEDsignal, OUTPUT);
+  digitalWrite(signal, HIGH); 
+  pinMode(LEDsignal, OUTPUT); //Make the LED pin an output
   digitalWrite(LEDsignal, LOW);
   
   
@@ -107,7 +107,7 @@ void loop() {
         }
         //Move from 90 to 0 degrees (straight down to horizontal)
         else{
-          myServo1.write(180);
+          myServo1.write(180); //Using 180 here, but for some reason it moves the servo to -90
           toggle = !toggle;
           digitalWrite(LEDsignal, HIGH);   // turn the LED on (HIGH is the voltage level)
           delay(500);                       // wait
@@ -117,23 +117,23 @@ void loop() {
       
      // VIDEO BUTTON (low signal from Camera, ~0.75s)
       if (millis_held > 500) {
-        //whatever we want... for now let's just show it works
+        //whatever we want... for now let's just show it works with an LED blink
          digitalWrite(LEDsignal, HIGH);   // turn the LED on (HIGH is the voltage level)
          delay(1500);                       // wait
          digitalWrite(LEDsignal, LOW);    // turn the LED off by making the voltage LOW
       }//end_if video
  
       //----------------------------------------------------------
-      //----------------------------------------------------------
+      //---------------- End Controlling the servo ---------------
       
       }
   }
-
+// NEEDED for reading the camera signal
   previous = current;
   prev_secs_held = secs_held;
 } //end loop
 
-//----------------------------------------------------------
+//--------------------- Servo timing -----------------------
 //----------------------------------------------------------
       
 // We'll take advantage of the built in millis() timer that goes off
