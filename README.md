@@ -19,7 +19,6 @@ To use and adapt for your own project download the `Syma_servo_trinket.ino` file
 
 ![alt text](https://raw.githubusercontent.com/EThornill/Syma_X5C_servo/master/images/schematic.jpg "schematic")
 
- *******************************************************************
  ### Components used
  
   **Board:** [Adafruit Trinket (3.3 v)](https://www.adafruit.com/product/1500)
@@ -32,13 +31,13 @@ To use and adapt for your own project download the `Syma_servo_trinket.ino` file
   
   This one is perfect because it's lightweight (< 2 grams) and works with an input voltage of 2.8 - 4.2 volts, which matches the Syma's 1s lipo battery. Useful details & pictures can be found on the [Micron Wings website](http://www.micronwings.com/Products/Servo%20HK5320/index.shtml)
   
-  *******************************************************************
+  ------------------------------
   
   ### Demostration
 - Project summary using a Trinket: https://youtu.be/Xz4V6qkwmkQ [VIDEO]
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=Xz4V6qkwmkQ
-" target="_blank"><img src="http://img.youtube.com/vi/Xz4V6qkwmkQ/0.jpg" 
+<a href="https://www.youtube.com/watch?feature=player_embedded&v=Xz4V6qkwmkQ
+" target="_blank"><img src="https://img.youtube.com/vi/Xz4V6qkwmkQ/0.jpg" 
 alt="Summary video on youtube" width="240" height="180" border="10" /></a>
 
 - Initial test using a Pro Trinket: https://youtu.be/eBlpM11Wp7U [VIDEO]
