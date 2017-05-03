@@ -9,7 +9,7 @@
 
 Using those signals this sketch moves a servo from 0 degress to -90 degrees to tilt a camera from horizontal (normal FPV flight) to looking down (for landing). Current config just toggles between 0 and -90 degrees using a single button push (picture button), leaving one button open (use tbd). Could be coded so one button increments servo in one direction, and the other button increments it the other.
 
-#### Other uses
+### Other uses
 
 The sketch can be adapted to control other components, such as LEDs, buzzers or altitude boards using the camera channel. Just make sure you include the code to read the camera signals.
 
