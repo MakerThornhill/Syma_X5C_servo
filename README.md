@@ -35,8 +35,8 @@ To use and adapt for your own project download the [Syma_servo_trinket.ino](../S
 **Images:**
 
 <a href="/images/overview.jpg"><img src="images/overview.jpg" 
-alt="Overview of completed setup" width="240" border="10" /></a><a href="images/schematic.jpg"><img src="images/schematic.jpg" 
-alt="schematic" width="240" border="10" /></a>
+alt="Overview of completed setup" width="240" border="5" /></a><a href="images/schematic.jpg"><img src="images/schematic.jpg" 
+alt="schematic" width="240" border="5" /></a>
 
 ------------------------------
 
@@ -78,7 +78,7 @@ SIGNAL(TIMER0_COMPA_vect) {
   }
  ```
  
- #### Detecting the Syma signal
+#### Detecting the Syma signal
  To read the signal from the Syma, we need to time how long the signal wire drops to 0v for. This is done by using part of a ['hold button' sketch](http://playground.arduino.cc/Code/HoldButton) that detects the state of the signal and uses `millis` to time the duration of that state. The important pieces of the code are here:
  
 Before the `void setup`:
@@ -172,7 +172,7 @@ To move between horizontal and looking straight down we toggle between the two p
   
 
  *******************************************************************
- ### References/Resources
+### References/Resources
 
   - Detecting the camera signal was adapted from a ['hold button' sketch](http://playground.arduino.cc/Code/HoldButton)
   - [Adafruit tutorial](https://learn.adafruit.com/trinket-gemma-servo-control/overview) on using servos with the trinket
