@@ -34,8 +34,8 @@ To use and adapt for your own project download the [Syma_servo_trinket.ino](../S
 
 **Images:**
 
-<a href="../images/overview.jpg"><img src="https://raw.githubusercontent.com/EThornill/Syma_X5C_servo/master/images/overview.jpg" 
-alt="Overview of completed setup" width="240" border="10" /></a><a href="../images/schematic.jpg"><img src="https://raw.githubusercontent.com/EThornill/Syma_X5C_servo/master/images/schematic.jpg" 
+<a href="/images/overview.jpg"><img src="images/overview.jpg" 
+alt="Overview of completed setup" width="240" border="10" /></a><a href="images/schematic.jpg"><img src="images/schematic.jpg" 
 alt="schematic" width="240" border="10" /></a>
 
 ------------------------------
