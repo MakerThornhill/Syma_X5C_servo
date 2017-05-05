@@ -29,8 +29,8 @@ To use and adapt for your own project download the [Syma_servo_trinket.ino](../S
 
 ![camera moving gif](https://raw.githubusercontent.com/EThornill/Syma_X5C_servo/master/images/Syma_X5C_servo.gif)
 
-- Initial test using a Pro Trinket: https://youtu.be/eBlpM11Wp7U [VIDEO]
-- Project summary using a Trinket: https://youtu.be/Xz4V6qkwmkQ [VIDEO]
+- Initial test using a Pro Trinket: https://youtu.be/eBlpM11Wp7U [[VIDEO](https://youtu.be/eBlpM11Wp7U)]
+- Project summary using a Trinket: https://youtu.be/Xz4V6qkwmkQ [[VIDEO](https://youtu.be/Xz4V6qkwmkQ)]
 
 **Images:**
 
