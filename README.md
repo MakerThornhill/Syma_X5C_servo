@@ -19,7 +19,7 @@ Using those signals this sketch moves a servo from 0 degress to -90 degrees to t
 
 The sketch can be adapted to control other components, such as LEDs, buzzers or altitude boards using the camera channel. Just make sure you include the code to [detect the signal from the Syma](#detecting-the-syma-signal).
 
-Since the same stock camera is used throughout the X5 series, this technique might also apply to other models, such as the Syma X5HC. X8C models might also apply.
+Since the same stock camera is used throughout the X5 series, this technique might also apply to other models, such as the Syma X5HC. X8C models might also apply, although X8 series has a different camera port and outputs +5v.
 
 #### Download
 
