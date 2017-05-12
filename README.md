@@ -4,7 +4,7 @@
  *******************************************************************
  
  - [Introduction](#introduction)
- - [Demo](#demostration)
+ - [Examples](#examples)
  - [Components](#components-used)
  - [Code](#code-breakdown)
  - [References/Resources](#referencesresources)
@@ -17,17 +17,14 @@ Using those signals this sketch moves a servo from 0 degress to -90 degrees to t
 
 #### Other uses
 
-The sketch can be adapted to control other components, such as LEDs, buzzers or altitude boards using the camera channel. Just make sure you include the code to [detect the signal from the Syma](#detecting-the-syma-signal).
+The sketch can be adapted to control other components, such as LEDs, buzzers or altitude boards using the camera channel.
+See the [Syma Arduino github](https://github.com/EThornill/Syma_Arduino) for a sketch to detect the signal from the Syma.
 
-Since the same stock camera is used throughout the X5 series, this technique might also apply to other models, such as the Syma X5HC. X8C models might also apply, although X8 series has a different camera port and outputs +5v.
-
-#### Download
-
-To use and adapt for your own project download the [Syma_servo_trinket.ino](../Syma_servo_trinket.ino) file
+Since the same stock camera is used throughout the X5 series, this technique can also apply to other models. X8 models might also apply, despite a different camera port and an output of +5v.
 
 ------------------------------
 
-### Demostration
+### Examples
 
 ![camera moving gif](https://raw.githubusercontent.com/EThornill/Syma_X5C_servo/master/images/Syma_X5C_servo.gif)
 
