@@ -13,7 +13,11 @@
 
 Uses the camera port on the Syma X5C to control a servo. When the picture or video buttons are pressed on the transmitter the signal wire (yellow) drops from 3.7v to 0v for 0.25s (picture) or 0.75s (video) [[Source: RCGroups]](https://www.rcgroups.com/forums/showpost.php?p=31397718&postcount=5415)
 
-Using those signals this sketch moves a servo from 0 degress to -90 degrees to tilt a camera from horizontal (normal FPV flight) to looking down (for landing). Current config just toggles between 0 and -90 degrees using a single button push (picture button), leaving one button open (use tbd). Could be coded so one button increments servo in one direction, and the other button increments it the other.
+Using those signals this sketch moves a servo from 0 degrees to -90 degrees to tilt a camera from horizontal (normal FPV flight) to looking down (for landing). Current config just toggles between 0 and -90 degrees using a single button push (picture button), leaving one button open (use tbd). Could be coded so one button increments servo in one direction, and the other button increments it the other.
+
+#### 3 Position Sketch
+
+With each button press, increments a servo from 0 to -45 degrees, -45 to -90, and -90 to 0 degrees.
 
 #### Other uses
 
@@ -56,32 +60,13 @@ alt="schematic" width="240" border="5" /></a>
 ### Code breakdown
 
 #### Adafruit softServo Library
-If using the basic trinket (the Pro version doesn't have this issue) you'll need to include the [Adafruit_SoftServo library](https://github.com/adafruit/Adafruit_SoftServo) via `#include <Adafruit_SoftServo.h>` since the standard Arduino IDE servo library will not work with 8 bit AVR microcontrollers.
+If using the basic trinket you'll need to include the [Adafruit_SoftServo library](https://github.com/adafruit/Adafruit_SoftServo), since the standard Arduino IDE servo library will not work with 8 bit AVR microcontrollers.
  
-You'll also need to periodically refresh the servo (see the [Adafruit trinket servo control guide](https://learn.adafruit.com/trinket-gemma-servo-control/overview)), requiring the following in the `void setup`:
- 
- ```arduino
-OCR0A = 0xAF;            // any number is OK
-TIMSK |= _BV(OCIE0A);    // Turn on the compare interrupt (below!)
- ```
- and this after the `void loop`:
- 
- ```arduino
- volatile uint8_t counter = 0;
-SIGNAL(TIMER0_COMPA_vect) {
-  // this gets called every 2 milliseconds
-  counter += 2;
-  // every 20 milliseconds, refresh the servos!
-  if (counter >= 20) {
-    counter = 0;
-    myServo1.refresh();
-    }
-  }
- ```
- 
+You'll also need to periodically refresh the servo (see the [Adafruit trinket servo control guide](https://learn.adafruit.com/trinket-gemma-servo-control/overview)).
+
  
 #### Detecting the Syma signal
- To read the signal from the Syma, we need to time how long the signal wire drops to 0v for. This is done by using part of a ['hold button' sketch](http://playground.arduino.cc/Code/HoldButton) that detects the state of the signal and uses `millis` to time the duration of that state. The important pieces of the code are here:
+ The signal from the Syma is timed to work out how long the signal drops to 0v for. This is done by using part of a ['hold button' sketch](http://playground.arduino.cc/Code/HoldButton) that detects the state of the signal and uses `millis` to time the duration of that state. The important pieces of the code are here:
  
 Before the `void setup`:
 ```arduino
@@ -140,7 +125,7 @@ Before the `void setup` we define the servo pin (I use pin \#0), name the servo,
 Adafruit_SoftServo myServo1; 
 boolean toggle = true;
 ```
-Then in the `void setup` we attach the servo to the servoPin and give it an initial position. For my use I wanted horizontal to the be starting position, which translates to a position of '180':
+Then in the `void setup` we attach the servo to the servoPin and give it an initial position. For my use I wanted horizontal to the be starting position. For my servo this translates to a position of '180':
 ```arduino
 myServo1.attach(servoPin);   // Attach the servo to pin 0 on Trinket
 myServo1.write(180);          // Initial position (horizontal)
