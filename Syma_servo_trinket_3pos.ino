@@ -7,7 +7,7 @@
 
   Uses the camera port on the Syma X5C to control a servo.
   When the picture or video buttons are pressed on the transmitter
-  the signal wire (yellow) drops from 3.7v to 0v f or 0.25s (picture)
+  the signal wire (yellow) drops from 3.7v to 0v for 0.25s (picture)
   or 0.75s (video).
 
   Using those signals this sketch moves a servo from 0 degress to 45 to
@@ -79,13 +79,23 @@ void loop() {
       //----------------------------------------------------------
 
       // PICTURE BUTTON (Low signal from Camera, 0.15 - 0.35s)
-      if (millis_held > 150  && millis_held < 350) {
+      // Switch to horizontal mode - useful when you need to quickly look up
+      // Using the picture button because this is the fastest
 
+      if (millis_held > 150  && millis_held < 350) {
+        myServo1.write(180); 
+        servoPosition = 0;
+      } //end_if picture
+
+      // VIDEO BUTTON (low signal from Camera, ~0.75s)
+      // Toggle between horizontal, 45 degrees, and straight down
+
+      if (millis_held > 500) {
         servoPosition = (servoPosition + 1) % 3;
 
         switch (servoPosition) {
           case 0:
-            myServo1.write(180);//Horizontal
+            myServo1.write(180);//Horizonal
             break;
           case 1:
             myServo1.write(90);//45 degree angle
@@ -94,14 +104,7 @@ void loop() {
             myServo1.write(0);//straight down
             break;
         }
-        LEDblink (500);
-        
-      } //end_if picture
-
-      // VIDEO BUTTON (low signal from Camera, ~0.75s)
-      if (millis_held > 500) {
-        //whatever we want... for now let's just show it works
-        LEDblink (1500);
+        LEDblink (100);     
       }//end_if video
 
       //----------------------------------------------------------
