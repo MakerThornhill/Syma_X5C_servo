@@ -21,7 +21,7 @@ With each button press, increments a servo from 0 to -45 degrees, -45 to -90, an
 
 #### Other uses
 
-The sketch can be adapted to control other components, such as LEDs, buzzers or altitude boards using the camera channel.
+The sketch can be adapted to control other components, such as LEDs, buzzers, altitude boards, or camera switchers using the camera channel.
 See the [Syma Arduino github](https://github.com/EThornill/Syma_Arduino) for a sketch to detect the signal from the Syma.
 
 Since the same stock camera is used throughout the X5 series, this technique can also apply to other models. X8 models might also apply, despite a different camera port and an output of +5v.
@@ -45,9 +45,9 @@ alt="schematic" width="240" border="5" /></a>
 
 ### Components used
  
-  **Board:** [Adafruit Trinket (3.3 v)](https://www.adafruit.com/product/1500)
+  **Microcontroller:** [Adafruit Trinket (3.3 v)](https://www.adafruit.com/product/1500) / These days the [Adafruit Trinket MO](https://www.adafruit.com/product/3500) is a much better microcontroller, and should work with the default arduino Servo library.
   
- Lightweight (~1.85 grams), uses the same logic as the servo, and is Arduino compatible
+ Lightweight (~1.85 grams), uses the same logic as the servo, and is Arduino/CircuitPython compatible
 
   >"Required library is the [Adafruit_SoftServo library](https://github.com/adafruit/Adafruit_SoftServo). The standard Arduino IDE servo library will not work with 8 bit AVR microcontrollers like Trinket and Gemma due to differences in available timer hardware and programming. We simply refresh by piggy-backing on the timer0 millis() counter" -- [Adafruit trinket servo control](https://learn.adafruit.com/trinket-gemma-servo-control/overview)
   
@@ -60,7 +60,7 @@ alt="schematic" width="240" border="5" /></a>
 ### Code breakdown
 
 #### Adafruit softServo Library
-If using the basic trinket you'll need to include the [Adafruit_SoftServo library](https://github.com/adafruit/Adafruit_SoftServo), since the standard Arduino IDE servo library will not work with 8 bit AVR microcontrollers.
+If using the basic trinket you'll need to include the [Adafruit_SoftServo library](https://github.com/adafruit/Adafruit_SoftServo), since the standard Arduino IDE servo library will not work with 8 bit AVR microcontrollers. This isn't a problem for the Trinket M0.
  
 You'll also need to periodically refresh the servo (see the [Adafruit trinket servo control guide](https://learn.adafruit.com/trinket-gemma-servo-control/overview)).
 
